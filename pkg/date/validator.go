@@ -7,5 +7,5 @@ import (
 )
 
 func validator(dateTime time.Time) bool {
-	return dateTime.After(config.START_END_DATE) && dateTime.Before(config.START_END_DATE)
+	return dateTime.After(config.TIME_START) && dateTime.Before(config.TIME_END)
 }
