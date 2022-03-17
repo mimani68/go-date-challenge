@@ -14,9 +14,9 @@ func main() {
 	logger.Log(i18n.ShowText("APP_STARTING"))
 
 	var startDateTimeString string
-	flag.StringVar(&startDateTimeString, "start", "02/01/2011", "This time check by syetem")
+	flag.StringVar(&startDateTimeString, "start", "", "This time check by syetem")
 	var endDateTimeString string
-	flag.StringVar(&endDateTimeString, "end", "15/01/2011", "This time check by syetem")
+	flag.StringVar(&endDateTimeString, "end", "", "This time check by syetem")
 	flag.Parse()
 
 	if startDateTimeString == "" || endDateTimeString == "" {
