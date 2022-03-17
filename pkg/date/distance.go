@@ -2,8 +2,8 @@ package date
 
 import "time"
 
-func Distance(firstDateTime time.Time, secondDateTime time.Time) (int, error) {
-	var result int
-	result = 5
-	return result, nil
+func Distance(secondDateTime time.Time, firstDateTime time.Time) (int, error) {
+	result := int(secondDateTime.Unix()) - int(firstDateTime.Unix())
+	result = result / (24 * 3600)
+	return result - 1, nil
 }

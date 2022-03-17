@@ -10,4 +10,10 @@ var EN = []map[string]string{
 	{
 		"NEED_TWO_DATE_STRING": "You must type two date",
 	},
+	{
+		"APP_STARTING": "Application starting",
+	},
+	{
+		"APP_STOP": "Application stoping without error",
+	},
 }

@@ -11,37 +11,35 @@ import (
 )
 
 func main() {
-	logger.Log("Application starting")
+	logger.Log(i18n.ShowText("APP_STARTING"))
 
-	var dateTimeOneString string
-	flag.StringVar(&dateTimeOneString, "start", "02/01/2011", "This time check by syetem")
-	var dateTimeTwoString string
-	flag.StringVar(&dateTimeTwoString, "end", "15/01/2011", "This time check by syetem")
+	var startDateTimeString string
+	flag.StringVar(&startDateTimeString, "start", "02/01/2011", "This time check by syetem")
+	var endDateTimeString string
+	flag.StringVar(&endDateTimeString, "end", "15/01/2011", "This time check by syetem")
 	flag.Parse()
 
-	if dateTimeOneString == "" || dateTimeTwoString == "" {
+	if startDateTimeString == "" || endDateTimeString == "" {
 		logger.LogError(i18n.ShowText("NEED_TWO_DATE_STRING"))
 		os.Exit(1)
 	}
 
-	dateTimeOne, err := date.DateBuilder(dateTimeOneString)
+	startDateTime, err := date.DateBuilder(startDateTimeString)
 	if err != nil {
-		logger.LogError(err.Error())
 		os.Exit(1)
 	}
 
-	dateTimeTwo, err := date.DateBuilder(dateTimeTwoString)
+	endDateTime, err := date.DateBuilder(endDateTimeString)
 	if err != nil {
-		logger.LogError(err.Error())
 		os.Exit(1)
 	}
 
-	distance, err := date.Distance(dateTimeTwo, dateTimeOne)
+	distance, err := date.Distance(endDateTime, startDateTime)
 	if err != nil {
 		logger.LogError(err.Error())
 		os.Exit(1)
 	}
 
 	logger.Log(fmt.Sprintf("Result is %d", distance))
-	logger.Log("Application stoping without error")
+	logger.Log(i18n.ShowText("APP_STOP"))
 }

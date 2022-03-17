@@ -21,7 +21,9 @@ func ShowText(tag string) string {
 func findInLanguage(languageObject []map[string]string, tag string) string {
 	var result string
 	for _, item := range languageObject {
-		result = item[tag]
+		if item[tag] != "" {
+			result = item[tag]
+		}
 	}
 	return result
 }

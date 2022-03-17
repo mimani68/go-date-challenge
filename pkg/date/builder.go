@@ -24,8 +24,9 @@ func DateBuilder(dateTime string) (time.Time, error) {
 		return time.Time{}, errors.New(i18n.ShowText("INVALID_DATE"))
 	}
 
-	if !validator(dateObject) {
+	if !DateValidator(dateObject) {
 		logger.LogError(i18n.ShowText("OUT_OF_RANGE"))
+		return time.Time{}, errors.New(i18n.ShowText("OUT_OF_RANGE"))
 	}
 
 	return dateObject, nil
