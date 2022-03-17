@@ -19,12 +19,12 @@ func DateBuilder(dateTime string) (time.Time, error) {
 	// dateOneObject, err := time.Parse(ISO_CUSTOM_FORMAT, dateTime)
 
 	if err != nil {
-		logger.Log(err.Error())
+		logger.LogError(err.Error())
 		return time.Time{}, errors.New(i18n.ShowText("INVALID_DATE"))
 	}
 
 	if !validator(dateOneObject) {
-		logger.Log(i18n.ShowText("OUT_OF_RANGE"))
+		logger.LogError(i18n.ShowText("OUT_OF_RANGE"))
 	}
 
 	return dateOneObject, nil
