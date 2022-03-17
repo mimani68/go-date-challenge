@@ -11,8 +11,7 @@ import (
 
 const (
 	ISO_DATE_FORMAT     = "2006-01-02"
-	ISO_DATETIME_FORMAT = /* "2006-01-02T12:20:11" */ time.RFC3339
-	ISO_CUSTOM_FORMAT   = "31-12-2006"
+	ISO_DATETIME_FORMAT = time.RFC3339
 )
 
 func DateBuilder(dateTime string) (time.Time, error) {
