@@ -10,4 +10,13 @@ var FR = []map[string]string{
 	{
 		"NEED_TWO_DATE_STRING": "xxxx",
 	},
+	{
+		"APP_STARTING": "x",
+	},
+	{
+		"APP_STOP": "cc",
+	},
+	{
+		"STOP_WITH_ERROR": "xxxe",
+	},
 }

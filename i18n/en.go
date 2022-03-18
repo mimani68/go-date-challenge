@@ -16,4 +16,7 @@ var EN = []map[string]string{
 	{
 		"APP_STOP": "Application stoping without error",
 	},
+	{
+		"STOP_WITH_ERROR": "Unfortunatly due the error the application will be stop.",
+	},
 }

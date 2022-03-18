@@ -1,4 +1,4 @@
-package color
+package console_color
 
 const (
 	ColorBlack  = "\u001b[30m"
