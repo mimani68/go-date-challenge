@@ -1,11 +1,10 @@
 package date
 
 import (
-	"time"
-
 	"dev.io/v1/config"
+	"dev.io/v1/pkg/time"
 )
 
 func DateValidator(dateTime time.Time) bool {
-	return dateTime.After(config.TIME_START) && dateTime.Before(config.TIME_END)
+	return dateTime.After(config.TIME_END) && dateTime.Before(config.TIME_START)
 }
