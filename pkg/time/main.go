@@ -1,6 +1,8 @@
 package time
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const (
 	RFC3339 = "ISO"
@@ -45,7 +47,7 @@ func (t *Time) unix() int {
 	y := (t.Year - 1970)
 	m := t.Month
 	d := t.Day
-	t.unixTime = (y*365 + t.addingDayForMonth(m) + d) * 24 * 3600
+	t.unixTime = (y*365 + t.cumulativeDayForMonth(m) + d + t.cumulativeLeapYearDays(t.Year)) * 24 * 3600
 	return t.unixTime
 }
 
@@ -53,36 +55,29 @@ func (t *Time) String() string {
 	return fmt.Sprintf("%d-%d-%dT00:00:00", t.Year, t.Month, t.Day)
 }
 
-func (t *Time) leapYearsAddingDays() int {
-	return 15
+func (t *Time) cumulativeLeapYearDays(year int) int {
+	result := 0
+	for i := 1970; i < year; i++ {
+		if t.isLeapYear(i) {
+			result = result + 1
+		}
+	}
+	return result
 }
 
-func (t *Time) addingDayForMonth(month int) int {
+func (t *Time) isLeapYear(year int) bool {
+	if 0 == year%4 && 0 != year%100 || 0 == year%400 {
+		return true
+	} else {
+		return false
+	}
+}
+
+func (t *Time) cumulativeDayForMonth(month int) int {
 	result := 0
-	if month >= 1 {
-		result = result + 31
-	} else if month >= 2 {
-		result = result + 29 //leap
-	} else if month >= 3 {
-		result = result + 31
-	} else if month >= 4 {
-		result = result + 30
-	} else if month >= 5 {
-		result = result + 31
-	} else if month >= 6 {
-		result = result + 30
-	} else if month >= 7 {
-		result = result + 31
-	} else if month >= 8 {
-		result = result + 31
-	} else if month >= 9 {
-		result = result + 30
-	} else if month >= 10 {
-		result = result + 31
-	} else if month >= 11 {
-		result = result + 30
-	} else if month >= 12 {
-		result = result + 31
+	dayList := []int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+	for i := 0; i < month; i++ {
+		result = result + dayList[i]
 	}
 	return result
 }
