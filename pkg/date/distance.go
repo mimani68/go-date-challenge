@@ -1,6 +1,8 @@
 package date
 
-import "time"
+import (
+	"dev.io/v1/pkg/time"
+)
 
 func Distance(secondDateTime time.Time, firstDateTime time.Time) (int, error) {
 	result := int(secondDateTime.Unix()) - int(firstDateTime.Unix())
