@@ -8,9 +8,13 @@ import (
 	"dev.io/v1/pkg/date"
 	"dev.io/v1/pkg/graceful_shutdown"
 	"dev.io/v1/pkg/logger"
+	time "dev.io/v1/pkg/time"
 )
 
 func main() {
+
+	// devSpace()
+
 	logger.Log(i18n.ShowText("APP_STARTING"))
 
 	var startDateTimeString string
@@ -42,4 +46,20 @@ func main() {
 
 	logger.Log(fmt.Sprintf("Result is %d", distance))
 	graceful_shutdown.StopApplication(0, i18n.ShowText("APP_STOP"))
+}
+
+func devSpace() {
+	// t := time.Now()  // FIXME: not for now plase ;)
+	// t := time.Date(2020, 12, 02, 12, 01, 01)
+	// t, _ := time.Parse(time.RFC3339, "03/01/2001")
+	t, _ := time.Parse(time.CUSTOM, "22/03/2022")
+	// fmt.Println(t.String())
+	fmt.Println(t.Unix())
+	// fmt.Println(t.Before(time.Date(2007, 02, 02, 00, 01, 01)))
+	// fmt.Println(t.After(time.Date(2007, 02, 02, 00, 01, 01)))
+	// distance, _ := date.Distance(time.Date(2001, 01, 03, 00, 00, 00), time.Date(2001, 01, 01, 00, 00, 00))
+	// t1, _ := time.Parse(time.RFC3339, "03/01/2001")
+	// t2, _ := time.Parse(time.RFC3339, "01/01/2001")
+	// distance, _ := date.Distance(t1, t2)
+	// fmt.Println(distance)
 }
